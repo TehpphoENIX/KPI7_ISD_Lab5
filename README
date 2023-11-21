@@ -1,0 +1,15 @@
+This is example of Test Driven Development for Lab work 5.
+
+We have class buffer -- container that stores N elements of type T. 
+
+- You can add element into it.
+- You can view last N elements in order they were added.
+- You can clean buffer, making all elements equal default value.
+
+Development of class Buffer (headers/Buffer.h) is driven by 3 consequtive tests:
+
+1. Buffer cannot be overflown by adding elements (it must delete old).
+2. Buffer must correctly output last N elements.
+3. Buffer must clean up correctly.
+
+By TDD addition of each test results in addition of corresponding method in class Buffer (1 - add, 2 - output, 3 - clean).

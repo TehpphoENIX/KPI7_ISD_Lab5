@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/Lab5TDDExample.dir/main.cpp.o -o Lab5TDDExample 

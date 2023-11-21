@@ -1,0 +1,18 @@
+Start testing: Nov 21 23:00 EET
+----------------------------------------------------------
+3/3 Testing: Buffer_is_cleaned_correctly
+3/3 Test: Buffer_is_cleaned_correctly
+Command: "/home/teh-phoenix/Documents/7/ISD/Lab5/build/Test3"
+Directory: /home/teh-phoenix/Documents/7/ISD/Lab5/build
+"Buffer_is_cleaned_correctly" start time: Nov 21 23:00 EET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Buffer_is_cleaned_correctly" end time: Nov 21 23:00 EET
+"Buffer_is_cleaned_correctly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 21 23:00 EET

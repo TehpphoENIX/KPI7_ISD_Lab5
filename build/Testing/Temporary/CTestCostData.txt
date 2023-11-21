@@ -1,0 +1,6 @@
+Buffer 0 0
+Buffer_dont_overflow 7 0.00735012
+Buffer_output_is_always_correct 2 0.00428838
+Buffer_output_is_correct 7 0.00911846
+Buffer_is_cleaned_correctly 6 0.0105812
+---

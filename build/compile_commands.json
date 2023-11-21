@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/teh-phoenix/Documents/7/ISD/Lab5/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/Lab5TDDExample.dir/main.cpp.o -c /home/teh-phoenix/Documents/7/ISD/Lab5/main.cpp",
+  "file": "/home/teh-phoenix/Documents/7/ISD/Lab5/main.cpp",
+  "output": "CMakeFiles/Lab5TDDExample.dir/main.cpp.o"
+},
+{
+  "directory": "/home/teh-phoenix/Documents/7/ISD/Lab5/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/Test1.dir/tests/test1.cpp.o -c /home/teh-phoenix/Documents/7/ISD/Lab5/tests/test1.cpp",
+  "file": "/home/teh-phoenix/Documents/7/ISD/Lab5/tests/test1.cpp",
+  "output": "CMakeFiles/Test1.dir/tests/test1.cpp.o"
+},
+{
+  "directory": "/home/teh-phoenix/Documents/7/ISD/Lab5/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/Test2.dir/tests/test2.cpp.o -c /home/teh-phoenix/Documents/7/ISD/Lab5/tests/test2.cpp",
+  "file": "/home/teh-phoenix/Documents/7/ISD/Lab5/tests/test2.cpp",
+  "output": "CMakeFiles/Test2.dir/tests/test2.cpp.o"
+},
+{
+  "directory": "/home/teh-phoenix/Documents/7/ISD/Lab5/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/Test3.dir/tests/test3.cpp.o -c /home/teh-phoenix/Documents/7/ISD/Lab5/tests/test3.cpp",
+  "file": "/home/teh-phoenix/Documents/7/ISD/Lab5/tests/test3.cpp",
+  "output": "CMakeFiles/Test3.dir/tests/test3.cpp.o"
+}
+]
