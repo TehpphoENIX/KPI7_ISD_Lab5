@@ -1,6 +1,6 @@
 #include <cassert>
 
-#include "../headers/Buffer.h"
+#include "../headers/buffer.h"
 
 int main()
 {
@@ -11,12 +11,12 @@ int main()
         buffer.add(i);
     }
 
-    buffer.clean();
+    buffer.Clean();
     
     std::array<int,n> evaluation;
     for (unsigned int i = 0; i < n; i++)
     {
         evaluation[i] = 0;
     }
-    assert(buffer.output() == evaluation);
+    assert(buffer.Output() == evaluation);
 }

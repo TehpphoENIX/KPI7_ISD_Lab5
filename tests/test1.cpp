@@ -1,6 +1,6 @@
 #include <cassert>
 
-#include "../headers/Buffer.h"
+#include "../headers/buffer.h"
 
 int main()
 {

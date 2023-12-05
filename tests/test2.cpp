@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "../headers/Buffer.h"
+#include "../headers/buffer.h"
 
 int main()
 {
@@ -18,5 +18,5 @@ int main()
         evaluation[i] = array[array.size() - n + i];
     }
 
-    assert((std::array<int,n>(buffer.output()) == evaluation));
+    assert((std::array<int,n>(buffer.Output()) == evaluation));
 }

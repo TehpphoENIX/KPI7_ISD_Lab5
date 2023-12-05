@@ -10,8 +10,8 @@
 template<typename T, int N>
 class Buffer
 {
-    std::array<T,N> array;
-    unsigned long next;
+    std::array<T,N> array_;
+    unsigned long next_;
 
 public:
     Buffer();
@@ -26,12 +26,12 @@ public:
      * 
      * @return std::array<T,N> -- resulting array.
      */
-    std::array<T,N> output();
+    std::array<T,N> Output();
     /**
      * @brief empty the buffer.
      * 
      */
-    void clean();
+    void Clean();
 };
 
 template <typename T, int N>
@@ -49,7 +49,7 @@ inline void Buffer<T, N>::add(T value)
 }
 
 template <typename T, int N>
-inline std::array<T, N> Buffer<T, N>::output()
+inline std::array<T, N> Buffer<T, N>::Output()
 {
     std::array<T, N> output;
 
@@ -64,7 +64,7 @@ inline std::array<T, N> Buffer<T, N>::output()
 }
 
 template <typename T, int N>
-inline void Buffer<T, N>::clean()
+inline void Buffer<T, N>::Clean()
 {
     for(unsigned int i = 0; i < N; i++)
     {
