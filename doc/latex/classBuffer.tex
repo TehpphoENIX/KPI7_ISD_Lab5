@@ -1,0 +1,93 @@
+\hypertarget{classBuffer}{}\doxysection{Buffer\texorpdfstring{$<$}{<} T, N \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classBuffer}\index{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}}
+
+
+allows to store data with ability to retrieve last N stored items.  
+
+
+
+
+{\ttfamily \#include $<$Buffer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}{add}} (T value)
+\begin{DoxyCompactList}\small\item\em add item to the buffer. \end{DoxyCompactList}\item 
+std\+::array$<$ T, N $>$ \mbox{\hyperlink{classBuffer_a92142dc0b1196e9370624712e60f6c6c}{output}} ()
+\begin{DoxyCompactList}\small\item\em show contents of the buffer In order they were added (last -\/ first). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBuffer_a9dec61563eab462d0b427a55b4b59692}{clean}} ()
+\begin{DoxyCompactList}\small\item\em empty the buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}\label{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}} 
+void {\bfseries add} (T value)
+\item 
+\mbox{\Hypertarget{classBuffer_a92142dc0b1196e9370624712e60f6c6c}\label{classBuffer_a92142dc0b1196e9370624712e60f6c6c}} 
+std\+::array$<$ T, N $>$ {\bfseries output} ()
+\item 
+\mbox{\Hypertarget{classBuffer_a9dec61563eab462d0b427a55b4b59692}\label{classBuffer_a9dec61563eab462d0b427a55b4b59692}} 
+void {\bfseries clean} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, int N$>$\newline
+class Buffer$<$ T, N $>$}
+allows to store data with ability to retrieve last N stored items. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & -- type of items that are stored in buffer. \\
+\hline
+{\em N} & -- size of a buffer. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}\label{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}} 
+\index{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!add@{add}}
+\index{add@{add}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$typename T , int N$>$ \\
+void \mbox{\hyperlink{classBuffer}{Buffer}}$<$ T, N $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+add item to the buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & -- item to be added. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBuffer_a9dec61563eab462d0b427a55b4b59692}\label{classBuffer_a9dec61563eab462d0b427a55b4b59692}} 
+\index{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!clean@{clean}}
+\index{clean@{clean}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily template$<$typename T , int N$>$ \\
+void \mbox{\hyperlink{classBuffer}{Buffer}}$<$ T, N $>$\+::clean\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+empty the buffer. 
+
+\mbox{\Hypertarget{classBuffer_a92142dc0b1196e9370624712e60f6c6c}\label{classBuffer_a92142dc0b1196e9370624712e60f6c6c}} 
+\index{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!output@{output}}
+\index{output@{output}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily template$<$typename T , int N$>$ \\
+std\+::array$<$ T, N $>$ \mbox{\hyperlink{classBuffer}{Buffer}}$<$ T, N $>$\+::output\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+show contents of the buffer In order they were added (last -\/ first). 
+
+\begin{DoxyReturn}{Returns}
+std\+::array$<$\+T,\+N$>$ -- resulting array. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Buffer.\+h\item 
+Buffer\+\_\+refactoring.\+h\end{DoxyCompactItemize}

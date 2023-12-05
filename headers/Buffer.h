@@ -1,6 +1,12 @@
 #pragma once
 #include <array>
 
+/**
+ * @brief allows to store data with ability to retrieve last N stored items.
+ * 
+ * @tparam T -- type of items that are stored in buffer.
+ * @tparam N -- size of a buffer.
+ */
 template<typename T, int N>
 class Buffer
 {
@@ -9,8 +15,22 @@ class Buffer
 
 public:
     Buffer();
+    /**
+     * @brief add item to the buffer.
+     * 
+     * @param value -- item to be added.
+     */
     void add(T value);
+    /**
+     * @brief show contents of the buffer In order they were added (last - first).
+     * 
+     * @return std::array<T,N> -- resulting array.
+     */
     std::array<T,N> output();
+    /**
+     * @brief empty the buffer.
+     * 
+     */
     void clean();
 };
 

@@ -1,0 +1,10 @@
+\indexentry{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}|hyperpage}{5}
+\indexentry{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!add@{add}|hyperpage}{6}
+\indexentry{add@{add}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}|hyperpage}{6}
+\indexentry{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!clean@{clean}|hyperpage}{6}
+\indexentry{clean@{clean}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}|hyperpage}{6}
+\indexentry{Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}!output@{output}|hyperpage}{6}
+\indexentry{output@{output}!Buffer$<$ T, N $>$@{Buffer$<$ T, N $>$}|hyperpage}{6}
+\indexentry{Buffer\_bad$<$ N $>$@{Buffer\_bad$<$ N $>$}|hyperpage}{6}
+\indexentry{Buffer.h@{Buffer.h}|hyperpage}{9}
+\indexentry{Buffer\_refactoring.h@{Buffer\_refactoring.h}|hyperpage}{10}

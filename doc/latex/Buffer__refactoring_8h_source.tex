@@ -1,0 +1,136 @@
+\hypertarget{Buffer__refactoring_8h_source}{}\doxysection{Buffer\+\_\+refactoring.\+h}
+\label{Buffer__refactoring_8h_source}\index{Buffer\_refactoring.h@{Buffer\_refactoring.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBuffer__bad}{Buffer\_bad}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ array[N];}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ next;}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classBuffer__bad}{Buffer\_bad}}();}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{void}\ add(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}*\ output();}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ clean();}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00017\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classBuffer__bad}{Buffer\_bad<N>::Buffer\_bad}}()}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ array[i]\ =\ T();}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ next\ =\ 0;}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00027\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer__bad}{Buffer\_bad<N>::add}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ array[next]\ =\ value;}
+\DoxyCodeLine{00030\ \ \ \ \ next++;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (next\ >=\ array.size())\ next\ =\ 0;}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{classBuffer__bad}{Buffer\_bad<N>::output}}()\{}
+\DoxyCodeLine{00036\ \ \ \ \ T\ output[N];}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0,\ j\ =\ next;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ output[i]\ =\ array[j];}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ j++;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ >=\ array.size())\ j\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ \&output[0];}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00049\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer__bad}{Buffer\_bad<N>::clean}}()}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ array[i]\ =\ T();}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ next\ =\ 0;}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//The\ code\ above\ has\ multiple\ problems:}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//-\/\ Primitive\ Obsession\ (usage\ of\ c\ style\ arrays)}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//-\/\ Indecent\ Exposure\ (there\ is\ no\ need\ to\ access\ array\ and\ next\ from\ outside)}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//-\/\ Dublicated\ Code\ (in\ constructor\ and\ clean\ for\ example)}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//-\/\ Alternative\ Classes\ (potentially,\ if\ we\ want\ to\ store\ other\ types\ inside\ of\ container)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//Refactored\ class\ will\ look\ like\ this}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00071\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBuffer}{Buffer}}}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::array<T,N>\ array;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ next;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classBuffer}{Buffer}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}{add}}(T\ value);}
+\DoxyCodeLine{00080\ \ \ \ \ std::array<T,N>\ \mbox{\hyperlink{classBuffer_a92142dc0b1196e9370624712e60f6c6c}{output}}();}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer_a9dec61563eab462d0b427a55b4b59692}{clean}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_add\_n\_fold(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ x);}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00088\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classBuffer}{Buffer<T,\ N>::Buffer}}()}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ clean();}
+\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00094\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer_acd48bac0d20e1796557a3dc2fc962c91}{Buffer<T,\ N>::add}}(T\ value)}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ array[next]\ =\ value;}
+\DoxyCodeLine{00097\ \ \ \ \ \_add\_n\_fold(next);}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00101\ \textcolor{keyword}{inline}\ std::array<T,\ N>\ \mbox{\hyperlink{classBuffer_a92142dc0b1196e9370624712e60f6c6c}{Buffer<T,\ N>::output}}()}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ std::array<T,\ N>\ output;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0,\ j\ =\ next;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ output[i]\ =\ array[j];}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \_add\_n\_fold(j);}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00115\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBuffer_a9dec61563eab462d0b427a55b4b59692}{Buffer<T,\ N>::clean}}()}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ array[i]\ =\ T();}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ next\ =\ 0;}
+\DoxyCodeLine{00122\ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00125\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classBuffer}{Buffer<T,\ N>::\_add\_n\_fold}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ x)}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{auto}\ out\ =\ x++;}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{if}(x\ >=\ array.size())\ x\ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00130\ \}}
+
+\end{DoxyCode}
